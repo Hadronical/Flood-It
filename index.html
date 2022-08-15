@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+	h1 {
+		padding: 5px 10px;
+		background-color: #272727;
+		text-align: center;
+
+		font-size: 5rem;
+	}
+</style>
+
+<head>
+	<title>Flood-It</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8" />
+</head>
+
+
+<body>
+	<h1>Flood It!</h1>
+
+	<div style="
+		width: 400px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		margin: 5px;">
+
+		<div style="display: flex; justify-content: center; gap: 5px;">
+			<select id="inp_size">
+				<option value="6">6 x 6</option>
+				<option value="10">10 x 10</option>
+				<option value="14" selected="selected">14 x 14</option>
+				<option value="16">16 x 16</option>
+				<option value="24">24 x 24</option>
+			</select>
+			<button id="btn_new" onclick="NewGame()">NEW GAME</button>
+			<button id="btn_restart" onclick="Restart()">RESTART</button>
+		</div>
+
+		<br>
+
+		<div class="colorContainer" id="colors">
+			<button class="colors" id="key_1"> </button>
+			<button class="colors" id="key_2"> </button>
+			<button class="colors" id="key_3"> </button>
+			<button class="colors" id="key_4"> </button>
+			<button class="colors" id="key_5"> </button>
+			<button class="colors" id="key_6"> </button>
+		</div>
+
+		<canvas id="gamecanvas" width="400" height="400">
+			Your browser does not support the html canvas! :(
+		</canvas>
+
+		<p style="font-size: large;" id="txt_moves"></p>
+	</div>
+
+
+	<button id="btn_save" onclick="SaveGame()">SAVE</button>
+	<button id="btn_load" onclick="LoadSave()">LOAD PREVIOUS</button>
+
+	<p>
+		Use the colored buttons to select a color to floodfill.
+		<br>
+		Your goal is to fill the entire grid with a single color, using a limited number of moves.
+	</p>
+
+	<script src="utils.js"></script>
+	<script src="sketch.js"></script>
+</body>
+  
+</html>
+
