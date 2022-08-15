@@ -237,10 +237,6 @@ function GRID_draw ()
 	for (let x = 0; x < size; x++)
 	{{
 		FillCOL(COLORS[grid[y][x]]);
-		if (currentSelection[y][x])
-		{
-			FillRGBA(0,255,255, 200);
-		}
 		let X = x * (gSize + gSpace);
 		let Y = y * (gSize + gSpace);
 		Rect(X,Y, gSize,gSize);
