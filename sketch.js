@@ -58,7 +58,6 @@ function setup()
 {
 	GRID_setSize();
 
-	NoStroke();
 	let button;
 	for (let i = 0; i < 6; i++)
 	{
@@ -160,6 +159,8 @@ function NewGame ()
 	}
 	
 	gridbase = JSON.stringify(temp);
+	
+	LoadSave();
 
 	Restart();
 }
@@ -184,20 +185,20 @@ function SaveGame ()
 	let savegrid = GRID_toString();
 	localStorage.setItem("savebase", gridbase);
 	localStorage.setItem("savegrid", savegrid);
+	localStorage.setItem("size", size);
+	localStorage.setItem("moves", moves);
 }
 function LoadSave ()
 {
-	let savebase = localStorage.getItem("savebase");
-	let savegrid = localStorage.getItem("savegrid");
+	let savebase  = localStorage.getItem("savebase");
+	let savegrid  = localStorage.getItem("savegrid");
+	let savesize  = localStorage.getItem("size", size);
+	let savemoves = localStorage.getItem("moves", moves);
 
-	if (savebase != null)
-	{
-		gridbase = savebase;
-	}
-	if (savegrid != null)
-	{
-		GRID_fromString(savegrid);
-	}
+	if (savebase != null)  { gridbase = savebase; }
+	if (savegrid != null)  { GRID_fromString(savegrid); }
+	if (savesize != null)  { size = savesize; }
+	if (savemoves != null) { moves = savemoves; }
 
 	updated = false;
 }
