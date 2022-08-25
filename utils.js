@@ -89,7 +89,7 @@ function NoStroke ()
 {
   ctx.strokeStyle = Color(0,0,0,0);
 }
-function strokeWidth (width)
+function StrokeWidth (width)
 {
   ctx.lineWidth = width;
 }
@@ -113,7 +113,7 @@ function ResetContext ()
 {
   FillRGBA(255);
   Stroke(255);
-  strokeWidth(1);
+  StrokeWidth(1);
   ctx.moveTo(0,0);
   ctx.resetTransform();
 }

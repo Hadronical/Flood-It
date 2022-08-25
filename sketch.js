@@ -79,6 +79,28 @@ function draw ()
 	if (!updated)
 	{
 		GRID_draw();
+
+
+		Stroke(60);
+		StrokeWidth(5);
+
+		if (moves >= maxmoves)
+		{
+			if (!complete)
+			{
+				FillRGBA(250,80,80, 200);
+				ctx.strokeText("You Lost!", width/2 - 100, height/2);
+				  ctx.fillText("You Lost!", width/2 - 100, height/2);
+				playing = false;
+			}
+		}
+		else if (complete)
+		{
+			FillRGBA(80,250,80, 200);
+			ctx.strokeText("You Win!", width/2 - 100, height/2);
+			  ctx.fillText("You Win!", width/2 - 100, height/2);
+		}
+
 		updated = true;
 	}
 
@@ -125,18 +147,6 @@ function draw ()
 		GRID_checkComplete();
 	}
 
-	if (moves >= maxmoves && !complete)
-	{
-		FillRGBA(250,80,80, 200);
-		ctx.fillText("You Lost!", width/2 - 100, height/2);
-		playing = false;
-	}
-	else if (complete)
-	{
-		FillRGBA(80,250,80, 200);
-		ctx.fillText("You Win!", width/2 - 100, height/2);
-	}
-
 	txt_moves.innerHTML = "moves: " + moves + "/" + maxmoves;
 
 	playing = !complete;
@@ -145,8 +155,10 @@ function draw ()
 
 function NewGame ()
 {
+	txt_moves.innerHTML = "";
+
 	let inp_size = document.getElementById("inp_size");
-	GRID_setSize(inp_size.value);
+	GRID_setSize(parseInt(inp_size.value));
 
 	let temp = [];
 	for (let y = 0; y < size; y++)
@@ -211,7 +223,7 @@ function GRID_setSize (s)
 
 	switch (size)
 	{
-		case 6: maxmoves = 15; break;
+		case 6:  maxmoves = 15; break;
 		case 10: maxmoves = 20; break;
 		case 14: maxmoves = 25; break;
 		case 16: maxmoves = 28; break;
