@@ -145,7 +145,8 @@ function draw ()
 
 function NewGame ()
 {
-	GRID_setSize();
+	let inp_size = document.getElementById("inp_size");
+	GRID_setSize(inp_size.value);
 
 	let temp = [];
 	for (let y = 0; y < size; y++)
@@ -160,7 +161,7 @@ function NewGame ()
 	
 	gridbase = JSON.stringify(temp);
 	
-	LoadSave();
+	SaveGame();
 
 	Restart();
 }
@@ -205,8 +206,7 @@ function LoadSave ()
 
 function GRID_setSize (s)
 {
-	let inp_size = document.getElementById("inp_size");
-	size = parseInt(inp_size.value);
+	size = s;
 	gSize = (width - gSpace * size) / size;
 
 	switch (size)
